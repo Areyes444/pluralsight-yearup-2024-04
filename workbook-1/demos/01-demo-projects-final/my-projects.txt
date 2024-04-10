@@ -1,0 +1,8 @@
+remodel:
+	- kitchen
+		- redo the entire kitchen
+	- basement
+		- finish basement
+photography:
+	- nature
+	- food
