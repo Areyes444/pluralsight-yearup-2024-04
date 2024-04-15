@@ -28,7 +28,7 @@ double hoursWorked = scanner.nextDouble();
 
         //Employee's results
         System.out.printf("Hello %s. \n", name);
-        System.out.printf("Total Gross pay is %.2f \n ", payTotal);
+        System.out.printf("Total Gross pay is $ %.2f \n ", payTotal);
 
     }
 }
