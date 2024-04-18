@@ -20,13 +20,18 @@ public class MathApp
     {
         // Question 1:
         // declare variables here
-
+        double bobSalary = 50000.0;
+        double garySalary = 75000.0;
+        double highestSalary;
 
         // code the logic to the problem here
-
+        highestSalary = Math.max(bobSalary, garySalary);
 
         // use System.out.println() to display results
         // ex: System.out.println("The answer is " + answer);
+        System.out.println();
+        System.out.println("Question 1");
+        System.out.println("The highest salary is: " + highestSalary);
     }
 
 
@@ -35,13 +40,18 @@ public class MathApp
     {
         // Question 2:
         // declare variables here
-
+        double carPrice = 19250;
+        double truckPrice = 45189;
+        double lowestPrice;
 
         // code the logic to the problem here
-
+        lowestPrice = Math.min(carPrice, truckPrice);
 
         // use System.out.println() to display results
         // ex: System.out.println("The answer is " + answer);
+        System.out.println();
+        System.out.println("Question 2");
+        System.out.println("The lowest vehicle price is: " + lowestPrice);
     }
 
 
@@ -50,13 +60,18 @@ public class MathApp
     {
         // Question 3:
         // declare variables here
+        double radius = 7.25;
+        double area;
 
 
         // code the logic to the problem here
-
+        area = Math.PI * Math.pow(radius, 2);
 
         // use System.out.println() to display results
         // ex: System.out.println("The answer is " + answer);
+        System.out.println();
+        System.out.println("Question 3");
+        System.out.println();
     }
 
 
