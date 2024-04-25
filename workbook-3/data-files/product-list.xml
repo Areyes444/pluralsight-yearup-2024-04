@@ -1,0 +1,14 @@
+<products>
+    <product>
+        <sku>AV1051</sku>
+        <name>JBL Bluetooth Speaker</name>
+        <price>89.95</price>
+        <deparment>Audio Video</deparment>
+    </product>
+    <product>
+        <sku>AV1312</sku>
+        <name>Mini 1000 Lumens Projector</name>
+        <price>149.95</price>
+        <department>Audio Video</department>
+    </product>
+</products>
