@@ -62,10 +62,13 @@ public class Main
                 builder.append(line + "\n");
             }
 
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex)
+        {
+            System.out.println(builder.toString());
 
         }
-        System.out.println(builder.toString());
+
     }
+
     
 }
