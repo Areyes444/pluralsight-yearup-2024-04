@@ -30,7 +30,11 @@ public class Car
 
     public void accelerate(int increaseBy)
     {
-        speed += increaseBy;
+        if(increaseBy > 0)
+        {
+            speed += increaseBy;
+        }
+
     }
 
     public void brake(int decreaseBy)

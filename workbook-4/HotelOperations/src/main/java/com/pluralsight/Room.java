@@ -59,14 +59,15 @@ public class Room
         return !isDirty() && !isOccupied();
     }
 
-    public void checkIn()
+    public boolean checkIn()
     {
         if(!isOccupied)
         {
             isOccupied = true;
             isDirty = true;
+            return true;
         } else {
-            System.out.println( "Room is not available.");
+            return false;
         }
     }
 
