@@ -13,6 +13,7 @@ public class Car
         this.speed = 0;
     }
 
+    // <editor-fold desc="getters">
     public String getMake()
     {
         return make;
@@ -27,6 +28,8 @@ public class Car
     {
         return speed;
     }
+
+    // </editor-fold>
 
     public void accelerate(int increaseBy)
     {
