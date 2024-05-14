@@ -34,7 +34,8 @@ public class BankAccount
 
     public boolean withdraw(double amount)
     {
-        if(amount < balance)
+        //if(amount <0) return false (can also work)
+        if(amount <= balance && amount >0)
         {
             balance -= amount;
             return true;
@@ -45,6 +46,8 @@ public class BankAccount
 
     public boolean deposit(double amount)
     {
+        if (amount <0) return false;
+
         balance += amount;
         return true;
     }

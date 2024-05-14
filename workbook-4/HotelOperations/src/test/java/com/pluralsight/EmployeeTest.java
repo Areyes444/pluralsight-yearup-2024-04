@@ -22,4 +22,6 @@ class EmployeeTest
         double actualTotal = employee.getRegularHours();
         assertEquals(expectedTotalHoursWorkedSoFar,actualTotal,"It should calculate a total amount of hours worked so far.");
     }
+
+
 }

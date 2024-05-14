@@ -33,6 +33,7 @@ class BankAccountTest
         boolean isSuccessful = account.withdraw(150.00);
 
         // assert
+        //assertEquals(false,isSuccessful)
         assertFalse(isSuccessful, "Because the account had a balance of $100 and the withdrawal was for $150");
         double expectedBalance = 100.00;
         double actualBalance = account.getBalance();

@@ -29,6 +29,7 @@ public class GuestHistory
         {
             fileScanner.nextLine();
 
+
             while(fileScanner.hasNextLine())
             {
                 String line = fileScanner.nextLine();
