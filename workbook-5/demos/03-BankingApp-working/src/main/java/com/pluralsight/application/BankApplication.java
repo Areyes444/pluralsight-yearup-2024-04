@@ -58,22 +58,26 @@ public class BankApplication
     public void withdraw()
     {
         int accountNumber = UserInterface.getAccountNumber();
-        BankAccount account = bankAccounts.stream()
-                                          .filter(acct -> acct.getAccountNumber() == accountNumber)
-                                          .findFirst()
-                                          .get();
 
-        double amount = UserInterface.getWithdrawalAmount();
-        boolean canWithdraw = account.canWithdraw(amount);
-        if(canWithdraw)
+        var result = bankAccounts.stream()
+                                  .filter(acct -> acct.getAccountNumber() == accountNumber)
+                                  .findFirst();
+
+        if(result.isPresent())
         {
-            account.withdraw(amount);
-            UserInterface.displayMessage(amount + " was withdrawn");
-            UserInterface.displayMessage("Remaining Balance: " + account.getBalance());
-        }
-        else
-        {
-            UserInterface.displayMessage("Sorry, you don't got enough");
+            BankAccount account = result.get();
+            double amount = UserInterface.getWithdrawalAmount();
+            boolean canWithdraw = account.canWithdraw(amount);
+            if (canWithdraw)
+            {
+                account.withdraw(amount);
+                UserInterface.displayMessage(amount + " was withdrawn");
+                UserInterface.displayMessage("Remaining Balance: " + account.getBalance());
+            }
+            else
+            {
+                UserInterface.displayMessage("Sorry, you don't got enough");
+            }
         }
     }
 }
