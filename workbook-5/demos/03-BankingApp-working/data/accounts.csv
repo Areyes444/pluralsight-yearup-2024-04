@@ -1,0 +1,6 @@
+type|acct number|owner|balance
+checking|1001|Angelica|5500.500000
+checking|1002|Dana|4359.250000
+savings|2001|Volodymyr|4350.780000
+savings|2002|Reyna|1234.130000
+checking|1003|Syd|6888.880000
