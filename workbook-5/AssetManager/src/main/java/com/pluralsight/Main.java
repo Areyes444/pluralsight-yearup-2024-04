@@ -17,8 +17,8 @@ public class Main
         {
             System.out.println("Description: " + asset.getDescription());
             System.out.println("Date Acquired: " + asset.getDateAcquired());
-            System.out.println("Value paid originally: " + asset.getOriginalCost());
-            System.out.println("Current Value: " + asset.getValue());
+            System.out.println("Value paid originally: $ " + asset.getOriginalCost());
+            System.out.println("Current Value: $ " + asset.getValue());
             System.out.println();
         }
     }

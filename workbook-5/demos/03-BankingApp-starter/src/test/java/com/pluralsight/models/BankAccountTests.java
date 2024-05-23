@@ -46,4 +46,20 @@ class BankAccountTests
         double actualNewBalance = account.getBalance();
         assertEquals(expectedNewBalance, actualNewBalance, "Because the account had $5000 and I deposited $500");
     }
+
+    @Test
+    public void transfer_shouldMoveMoney_fromOneAccount_toAnother()
+    {
+        //arrange
+        BankAccount fromAccount = new BankAccount(123, "Angelica", 5000);
+        BankAccount toAccount = new BankAccount(456,"Fahd",5000);
+
+        //act
+        boolean transferSucceeded = fromAccount.transfer(toAccount, 500);
+
+
+        //assert
+        //check if the transfer() method returned true or false
+        assertTrue(transferSucceeded, "because $500 should have been moved from Angelica's account to Fhad's");
+    }
 }

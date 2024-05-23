@@ -2,11 +2,11 @@ package com.pluralsight.models;
 
 public class Rectangle extends Shape
 {
-    private int width;
-    private int height;
+    private double width;
+    private double height;
 
 
-    public Rectangle(int width, int height)
+    public Rectangle(double width, double height)
     {
         super("Rectangle");
 
@@ -14,7 +14,7 @@ public class Rectangle extends Shape
         this.height = height;
     }
 
-    public Rectangle(String name, int width, int height)
+    public Rectangle(String name, double width, double height)
     {
         super(name);
 
@@ -22,12 +22,12 @@ public class Rectangle extends Shape
         this.height = height;
     }
 
-    public int getWidth()
+    public double getWidth()
     {
         return width;
     }
 
-    public int getHeight()
+    public double getHeight()
     {
         return height;
     }

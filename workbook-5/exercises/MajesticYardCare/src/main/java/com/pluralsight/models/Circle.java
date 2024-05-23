@@ -2,9 +2,9 @@ package com.pluralsight.models;
 
 public class Circle extends Shape
 {
-    private int radius;
+    private double radius;
 
-    public Circle(int radius)
+    public Circle(double radius)
     {
         super("Circle");
         this.radius = radius;

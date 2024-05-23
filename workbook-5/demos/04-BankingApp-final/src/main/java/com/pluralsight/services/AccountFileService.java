@@ -30,7 +30,7 @@ public class AccountFileService
                 String[] tokens = line.split("\\|");
 
                 String type = tokens[0];
-                int accountNumber = Integer.parseInt(tokens[1]);
+                int accountNumber = Integer.parseInt(tokens[1]); 
                 String owner = tokens[2];
                 double balance = Double.parseDouble(tokens[3]);
 

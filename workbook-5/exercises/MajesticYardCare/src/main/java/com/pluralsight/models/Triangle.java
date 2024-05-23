@@ -2,22 +2,22 @@ package com.pluralsight.models;
 
 public class Triangle extends Shape
 {
-    private int base;
-    private int height;
+    private double base;
+    private double height;
 
-    public Triangle(int base, int height)
+    public Triangle(double base, double height)
     {
-        super("Triangle");
+        super("triangle");
         this.base = base;
         this.height = height;
     }
 
-    public int getBase()
+    public double getBase()
     {
         return base;
     }
 
-    public int getHeight()
+    public double getHeight()
     {
         return height;
     }

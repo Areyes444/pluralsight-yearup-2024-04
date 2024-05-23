@@ -13,6 +13,7 @@ public class BankAccount
         this.balance = balance;
     }
 
+
     public int getAccountNumber()
     {
         return accountNumber;
@@ -43,5 +44,16 @@ public class BankAccount
     public boolean canWithdraw(double amount)
     {
         return true;
+    }
+
+    public boolean transfer(BankAccount destination, double amount)
+    {
+        if(canWithdraw(amount))
+        {
+            withdraw(amount);
+            destination.deposit(amount);
+            return true;
+        }
+        return false;
     }
 }
