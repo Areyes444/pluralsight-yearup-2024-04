@@ -1,3 +1,4 @@
+use northwind;
 
 DELETE FROM `order details`
 WHERE ProductID in(61,7,49,52,71,34,77,37,30,24,3);
