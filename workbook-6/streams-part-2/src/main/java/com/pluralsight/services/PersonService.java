@@ -11,9 +11,15 @@ public class PersonService
 
     public List<Person> findPeople(List<Person> people, String name)
     {
+        List<Person> filteredPeople = people.stream()
+                .filter(person -> person.getFirstName().equalsIgnoreCase(name))
+                .toList();
+
+        filteredPeople.forEach(name -> {
+            System.out.println(filteredPeople);
+        });
         // search for people by first name
         // return a new List<Person> with the search results
-        return new ArrayList<>();
     }
 
     public List<Person> findPeople(List<Person> people, int age)
