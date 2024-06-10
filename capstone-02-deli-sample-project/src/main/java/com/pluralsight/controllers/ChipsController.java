@@ -3,12 +3,12 @@ package com.pluralsight.controllers;
 import com.pluralsight.models.Order;
 import com.pluralsight.models.products.Chips;
 import com.pluralsight.services.Logger;
-import com.pluralsight.services.data.ProductTypesService;
+import com.pluralsight.services.data.CsvProductTypesService;
 import com.pluralsight.views.toppings.UserOptionSelectView;
 
 public class ChipsController extends Controller
 {
-    ProductTypesService productsService = new ProductTypesService(logger);
+    CsvProductTypesService productsService = new CsvProductTypesService(logger);
 
     private Order order;
     private Chips chips;

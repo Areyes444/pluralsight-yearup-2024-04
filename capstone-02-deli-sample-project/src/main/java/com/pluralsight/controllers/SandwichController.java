@@ -3,8 +3,9 @@ package com.pluralsight.controllers;
 import com.pluralsight.models.Order;
 import com.pluralsight.models.products.Sandwich;
 import com.pluralsight.models.toppings.*;
-import com.pluralsight.services.data.ProductTypesService;
+import com.pluralsight.services.data.CsvProductTypesService;
 import com.pluralsight.services.Logger;
+import com.pluralsight.services.data.ProductTypesService;
 import com.pluralsight.services.data.SizeTypeService;
 import com.pluralsight.views.sandwich.SandwichToastedSelectView;
 import com.pluralsight.views.toppings.*;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class SandwichController extends Controller
 {
-    protected ProductTypesService productsService = new ProductTypesService(logger);
+    protected ProductTypesService productsService = new CsvProductTypesService(logger);
     protected SizeTypeService sizeTypeService = new SizeTypeService(logger);
 
     protected Order order;

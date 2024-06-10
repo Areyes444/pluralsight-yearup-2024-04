@@ -3,14 +3,14 @@ package com.pluralsight.controllers;
 import com.pluralsight.models.Order;
 import com.pluralsight.models.products.Drink;
 import com.pluralsight.services.Logger;
-import com.pluralsight.services.data.ProductTypesService;
+import com.pluralsight.services.data.CsvProductTypesService;
 import com.pluralsight.services.data.SizeTypeService;
 import com.pluralsight.views.SizeSelectView;
 import com.pluralsight.views.toppings.UserOptionSelectView;
 
 public class DrinksController extends Controller
 {
-    ProductTypesService productsService = new ProductTypesService(logger);
+    CsvProductTypesService productsService = new CsvProductTypesService(logger);
     SizeTypeService sizeTypeService = new SizeTypeService(logger);
 
     private Order order;

@@ -28,7 +28,7 @@ class SandwichTests
     public void getPrice_should_addMeatPrice_asPremium()
     {
         // arrange
-        sandwich.setSize(Size.SMALL);
+        sandwich.setSize("Small");
         var steak = new Meat("Steak");
         sandwich.addTopping(steak);
 
@@ -47,7 +47,7 @@ class SandwichTests
     public void getPrice_should_add2MeatPrices_asPremium()
     {
         // arrange
-        sandwich.setSize(Size.SMALL);
+        sandwich.setSize("Small");
         var steak = new Meat("Steak");
         var ham = new Meat("Ham");
         sandwich.addTopping(steak);
@@ -68,7 +68,7 @@ class SandwichTests
     public void getPrice_should_addCheesePrice_asPremium()
     {
         // arrange
-        sandwich.setSize(Size.SMALL);
+        sandwich.setSize("Small");
         var cheddar = new Cheese("Cheddar");
         sandwich.addTopping(cheddar);
 
@@ -85,7 +85,7 @@ class SandwichTests
     public void getPrice_should_add2CheesePrice_asPremium()
     {
         // arrange
-        sandwich.setSize(Size.SMALL);
+        sandwich.setSize("Small");
         var cheddar = new Cheese("Cheddar");
         var cheddar2 = new Cheese("Cheddar");
         sandwich.addTopping(cheddar);
@@ -105,7 +105,7 @@ class SandwichTests
     public void getPrice_should_addMeatAndCheesePrice_asPremium()
     {
         // arrange
-        sandwich.setSize(Size.SMALL);
+        sandwich.setSize("Small");
         var steak = new Meat("Steak");
         var cheddar = new Cheese("Cheddar");
         sandwich.addTopping(steak);
@@ -126,7 +126,7 @@ class SandwichTests
     public void getPrice_should_add2MeatAnd2CheesePrice_asPremium()
     {
         // arrange
-        sandwich.setSize(Size.SMALL);
+        sandwich.setSize("Small");
         var steak = new Meat("Steak");
         var ham = new Meat("Ham");
         var cheddar = new Cheese("Cheddar");
