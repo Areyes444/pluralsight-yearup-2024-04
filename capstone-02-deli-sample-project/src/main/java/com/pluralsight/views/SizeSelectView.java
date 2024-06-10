@@ -1,27 +1,27 @@
-package com.pluralsight.views.sandwich;
+package com.pluralsight.views;
 
-import com.pluralsight.models.data.ProductType;
-import com.pluralsight.views.ViewBase;
+import com.pluralsight.models.data.SizeType;
 
 import java.util.List;
 
-public class SandwichBreadSelectView extends ViewBase
+public class SizeSelectView extends ViewBase
 {
-    private List<ProductType> breads;
+    private List<SizeType> sizes;
 
-    public SandwichBreadSelectView(List<ProductType> breads)
+    public SizeSelectView(List<SizeType> sizes)
     {
-        this.breads = breads;
+        this.sizes = sizes;
     }
 
-    public ProductType getBreadSelection()
+    public SizeType getSizeSelection()
     {
         printLine();
-        printHeader("Select Sandwich Bread");
+        printHeader("What size would you like?");
 
         printLine();
-        breads.forEach(bread -> {
-            printOptionLine(bread.getId(), bread.getName());
+        sizes.forEach(size -> {
+            String sizeName = String.format("%-7s ($ %.2f)",size.getName(), size.getPrice());
+            printOptionLine(size.getDisplayOption(), sizeName );
         });
         printCancelLine();
         printLine();
@@ -36,7 +36,7 @@ public class SandwichBreadSelectView extends ViewBase
                 // cancel
                 if(option == 0) return null;
 
-                var selection = breads.stream().filter(b -> b.getId() == option).findFirst();
+                var selection = sizes.stream().filter(s -> s.getDisplayOption() == option).findFirst();
                 if(selection.isPresent())
                 {
                     return selection.get();

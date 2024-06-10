@@ -1,11 +1,12 @@
-package com.pluralsight.views;
+package com.pluralsight.views.home;
 
-import com.pluralsight.views.enumerations.HomeOptions;
+import com.pluralsight.views.ViewBase;
+import com.pluralsight.controllers.enumerations.HomeOptions;
 
 import java.io.InputStream;
 import java.io.PrintStream;
 
-public class HomeView extends ViewBase<HomeOptions>
+public class HomeView extends ViewBase
 {
     public HomeView()
     {
@@ -16,36 +17,29 @@ public class HomeView extends ViewBase<HomeOptions>
         super(in, out);
     }
 
-    @Override
-    public void display()
+    public HomeOptions getUserSelection()
     {
         while(true)
         {
             printLine();
-            printYellow("""
-                    ---------------------------------------------
-                                Welcome to the Deli
-                    ---------------------------------------------
+            printHeader("Welcome to the Deli");
 
-                    What do you want to do today?
-                    
-                    """);
-            printGreen("[1] ");
-            printLine("Place an order");
-            printRed("[0] ");
-            printLine("Exit");
+            printLine("What do you want to do today?");
 
-            printYellow("Please select and option: ");
+            printLine();
+            printGreen("  [1] "); printLine(HomeOptions.ORDER);
+            printRed("  [0] "); printLine(HomeOptions.EXIT);
+            printLine();
+
+            print("Please select and option: ");
             int option = getIntInput();
 
             switch(option)
             {
                 case 1:
-                    setModel(HomeOptions.ORDER);
-                    return;
-                case 2:
-                    setModel(HomeOptions.EXIT);
-                    return;
+                    return HomeOptions.ORDER;
+                case 0:
+                    return HomeOptions.EXIT;
             }
 
             printLine();

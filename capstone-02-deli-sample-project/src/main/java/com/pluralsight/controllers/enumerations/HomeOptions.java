@@ -1,14 +1,12 @@
-package com.pluralsight.models.enumerations;
+package com.pluralsight.controllers.enumerations;
 
-public enum Size
+public enum HomeOptions
 {
-    SMALL("Small"),
-    MEDIUM("Medium"),
-    LARGE("Large");
+    ORDER("Order"), EXIT("Exit");
 
     private final String val;
 
-    Size(String val)
+    HomeOptions(String val)
     {
         this.val = val;
     }

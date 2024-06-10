@@ -1,0 +1,13 @@
+id, display id,category,size,price,extra
+1,1,Bread,Small,5.50,5.50
+2,2,Bread,Medium,7.00,7.00
+3,3,Bread,Large,8.50,8.50
+4,1,Drink,Small,2.00,2.00
+5,2,Drink,Medium,2.50,2.50
+6,3,Drink,Large,3.00,3.00
+7,1,Meat,Small,1.00,0.50
+8,2,Meat,Medium,2.00,1.00
+9,3,Meat,Large,3.00,1.50
+10,1,Cheese,Small,0.75,0.30
+11,2,Cheese,Medium,1.50,0.60
+12,3,Cheese,Large,2.25,0.90

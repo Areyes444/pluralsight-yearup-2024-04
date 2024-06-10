@@ -2,7 +2,7 @@ package com.pluralsight.models;
 
 import java.math.BigDecimal;
 
-public interface Pricable
+public interface Priceable
 {
     BigDecimal getPrice();
 }

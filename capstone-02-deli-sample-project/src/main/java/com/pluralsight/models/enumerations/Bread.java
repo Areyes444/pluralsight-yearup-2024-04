@@ -1,6 +1,6 @@
-package com.pluralsight.views.enumerations;
+package com.pluralsight.models.enumerations;
 
-public enum BreadOptions
+public enum Bread
 {
     WHITE("White"),
     WHEAT("Wheat"),
@@ -9,7 +9,7 @@ public enum BreadOptions
 
     private final String val;
 
-    BreadOptions(String val)
+    Bread(String val)
     {
         this.val = val;
     }
