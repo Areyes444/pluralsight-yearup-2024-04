@@ -1,11 +1,60 @@
-package com.pluralsight;
+package com.pluralsight.application;
 
-import java.sql.*;
+import org.apache.commons.dbcp2.BasicDataSource;
+
+import javax.sql.DataSource;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Properties;
 import java.util.Scanner;
 
-public class  Main
+public class WorldApplication
 {
-    public static void main(String[] args) throws ClassNotFoundException
+    DataSource dataSource;
+    private String connectionString;
+    private String username;
+    private String password;
+
+    public WorldApplication()
+    {
+        readProperties();
+        // build a BasicDataSource
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl(connectionString);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+
+        // set our class dataSource to the BasicDataSource
+        this.dataSource = dataSource;
+
+    }
+
+    private void readProperties()
+    {
+        Properties properties = new Properties();
+
+        try(FileInputStream stream = new FileInputStream("src/main/resources/config.properties"))
+        {
+            properties.load(stream);
+            connectionString = properties.getProperty("db.connectionstring");
+            username = properties.getProperty("db.username");
+            password = properties.getProperty("db.password");
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void run()
+    {
+        displayCities();
+    }
+
+    public void displayCities()
     {
         Scanner in = new Scanner(System.in);
 
@@ -14,16 +63,10 @@ public class  Main
         System.out.print("Enter a min population: ");
         int populationSearch = Integer.parseInt(in.nextLine());
 
-        String connectionString = "jdbc:mysql://localhost:3306/world";
-        String username = "root";
-        String password = "P@ssw0rd";
-
-        // load the MySQL Driver
-        Class.forName("com.mysql.cj.jdbc.Driver");
 
         // 1. open a connection to the database
         // use the database URL to point to the correct database
-        try(Connection connection = DriverManager.getConnection(connectionString, username, password))
+        try(Connection connection = dataSource.getConnection())
         {
 
             // 2. execute a statement
@@ -65,6 +108,5 @@ public class  Main
         {
             System.out.println(e.getMessage());
         }
-
     }
 }
