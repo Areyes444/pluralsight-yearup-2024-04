@@ -44,6 +44,8 @@ public class Main
                 System.out.printf("%4d: %-20s %3s %-15s %d  \n", id, city, country, state, population);
             }
 
+            connection.close();
+
 
             // 3. the connection automatically closes when we exit the try block
         }
