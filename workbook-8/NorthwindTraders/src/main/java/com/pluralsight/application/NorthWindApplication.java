@@ -12,35 +12,38 @@ import java.util.Scanner;
 
 public class NorthWindApplication
 {
-   private static Scanner userInput= new Scanner(System.in);
-    //initiating variables
+   private Scanner userInput= new Scanner(System.in);
+    //initiating variable
     DataSource datasource;
-    private String connectionString;
-    private String username;
-    private String password;
+
 
     public NorthWindApplication()
     {
         readProperties();
-        //build the BasicDataSource
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl(connectionString);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        //setting class dataSource to the BasicDataSource
-        this.datasource = dataSource;
+
     }
 
     private void readProperties()
     {
+        //building the BasicDataSource
+        //first get the variables from the properties file
         Properties properties = new Properties();
 
         try(FileInputStream stream = new FileInputStream("src/main/resources/config.properties"))
         {
             properties.load(stream);
-            connectionString = properties.getProperty("db.connectionString");
-            username = properties.getProperty("db.username");
-            password = properties.getProperty("db.password");
+            String connectionString = properties.getProperty("db.connectionString");
+            String username = properties.getProperty("db.username");
+            String  password = properties.getProperty("db.password");
+
+            //build a BasicDataSource object
+            BasicDataSource dataSource = new BasicDataSource();
+            dataSource.setUrl(connectionString);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
+
+            //setting class dataSource to the BasicDataSource
+            this.datasource = dataSource;
 
         } catch (IOException e)
         {
@@ -49,7 +52,7 @@ public class NorthWindApplication
         }
     }
 
-    public static void run()
+    public void run()
     {
 
         System.out.println("----------------North Wind Traders----------------");
@@ -108,11 +111,8 @@ public class NorthWindApplication
 
     }
 
-    public static void displayAllProducts()
+    public void displayAllProducts()
     {
-
-        String username = "root";
-        String password = "YUm15510n";
 
 
         try
@@ -123,10 +123,7 @@ public class NorthWindApplication
             // 1. open a connection to the database
             // use the database URL to point to the correct database
             Connection connection;
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/northwind",
-                    username,
-                    password);
+            connection = datasource.getConnection();
 
             // 2. execute a statement
             String sql = """
@@ -162,11 +159,8 @@ public class NorthWindApplication
 
     }
 
-    public static void displayAllCustomers()
+    public void displayAllCustomers()
     {
-
-        String username = "root";
-        String password = "YUm15510n";
 
         try
         {
@@ -176,10 +170,8 @@ public class NorthWindApplication
             // 1. open a connection to the database
             // use the database URL to point to the correct database
             Connection connection;
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/northwind",
-                    username,
-                    password);
+            connection = datasource.getConnection();
+
 
             // 2. execute a statement
 
@@ -217,11 +209,8 @@ public class NorthWindApplication
 
     }
 
-    public static void displayAllCategories()
+    public void displayAllCategories()
     {
-
-        String username = "root";
-        String password = "YUm15510n";
 
         try
         {
@@ -231,10 +220,8 @@ public class NorthWindApplication
             // 1. open a connection to the database
             // use the database URL to point to the correct database
             Connection connection;
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/northwind",
-                    username,
-                    password);
+            connection = datasource.getConnection();
+
 
             // 2. execute a statement
 
