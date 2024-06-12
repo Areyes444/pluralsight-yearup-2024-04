@@ -104,9 +104,9 @@ public class WorldApplication
 
             // 3. close the connection
         }
-        catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
+//        catch(Exception e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
     }
 }
