@@ -54,16 +54,42 @@ public class MySqlActorsDao implements ActorsDao
     @Override
     public List<Actor> searchByName(String firstName, String lastName)
     {
-        var actors = new ArrayList<Actor>();
+        List<Actor> actors = new ArrayList<>();
+
+        String firstSearch = "%" + firstName + "%";
+        String lastSearch = "%" + lastName + "%";
 
         try(Connection connection = dataSource.getConnection())
         {
-            // search logic here
-        }
-        catch (SQLException e)
-        {
-        }
+            String sql = """
+                        SELECT actor_id
+                            , first_name
+                            , last_name
+                        FROM actor
+                        WHERE first_name LIKE ?
+                            AND last_name LIKE ?;
+                    """;
 
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstSearch);
+            statement.setString(2, lastSearch);
+
+            ResultSet row = statement.executeQuery();
+
+            while(row.next())
+            {
+                int actorId = row.getInt("actor_id");
+                String first = row.getString("first_name");
+                String last = row.getString("last_name");
+
+
+                actors.add(new Actor(actorId, first, last));
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
         return actors;
     }
 
@@ -96,7 +122,7 @@ public class MySqlActorsDao implements ActorsDao
         catch (SQLException e)
         {
         }
-        return new Actor();
+        return null;
 
     }
 
@@ -117,11 +143,12 @@ public class MySqlActorsDao implements ActorsDao
             ResultSet key = statement.getGeneratedKeys();
             key.next();
             int id = key.getInt(1);
-            actor.setActorId(id);
+
+            return getById(id);
         }
         catch (Exception e){}
 
-        return actor;
+        return null;
     }
 
     @Override

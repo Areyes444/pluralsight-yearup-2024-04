@@ -1,12 +1,14 @@
 package com.pluralsight.application;
 
 import com.pluralsight.models.Actor;
+import com.pluralsight.models.Film;
+import com.pluralsight.models.FilmActor;
 
 import java.util.List;
 
 public class SakilaMoviesApplication
 {
-    private ApplicationConfiguration config;
+    private final ApplicationConfiguration config;
 
     public SakilaMoviesApplication(ApplicationConfiguration config)
     {
@@ -58,6 +60,10 @@ public class SakilaMoviesApplication
 
     private void searchActors()
     {
+        Actor searchActor = config.actorSearchView.getSearchedActor();
+
+        List<Actor> actors = config.actorsController.searchByName(searchActor.getFirstName(), searchActor.getLastName());
+        config.actorListView.displayActors(actors);
     }
 
     private void addActor()
@@ -77,6 +83,7 @@ public class SakilaMoviesApplication
 
         // get the updated info
         Actor actorToUpdate = config.actorUpdateView.getActorInformation();
+        actorToUpdate.setActorId(actor.getActorId());
         // save the actor info
         config.actorsController.updateActor(actorToUpdate);
 
@@ -108,13 +115,74 @@ public class SakilaMoviesApplication
 
             switch (selection)
             {
-                case 1 -> displayFilmsList();
+                case 1 -> searchFilmsByTitle();
+                case 2 -> searchFilmsByActor();
+                case 3 -> addFilm();
+                case 4 -> updateFilm();
+                case 5 -> deleteFilm();
+                case 6 -> addActorToFilm();
+                case 7 -> removeActorFromFilm();
                 case 0 -> { return; }
             }
         }
     }
 
-    private void displayFilmsList()
+    private void searchFilmsByTitle()
     {
+        String title = config.filmSearchByTitleView.getFilmTitle();
+        List<Film> films = config.filmsController.searchByTitle(title);
+        config.filmListView.displayFilms(films);
+    }
+
+    private void searchFilmsByActor()
+    {
+        int actorId = config.filmSearchByActorView.getActorId();
+        List<Film> films = config.filmsController.searchByActor(actorId);
+        config.filmListView.displayFilms(films);
+    }
+
+    private void addFilm()
+    {
+        Film film = config.filmAddView.getNewFilm();
+        Film newFilm = config.filmsController.addFilm(film);
+        config.filmDetailView.displayFilmDetails(newFilm);
+    }
+
+    private void updateFilm()
+    {
+        int filmId = config.filmSearchByIdView.getFilmId();
+        Film film = config.filmsController.findFilmById(filmId);
+        config.filmDetailView.displayFilmDetails(film);
+
+        if(film != null)
+        {
+            Film filmToUpdate = config.filmUpdateView.getUpdatedFilm();
+            filmToUpdate.setFilmId(film.getFilmId());
+        }
+    }
+
+    private void deleteFilm()
+    {
+        int filmId = config.filmSearchByIdView.getFilmId();
+        Film film = config.filmsController.findFilmById(filmId);
+        config.filmDetailView.displayFilmDetails(film);
+        config.filmDeleteView.getUserDeleteResponse(film);
+        config.filmsController.deleteFilm(film.getFilmId());
+    }
+
+    private void addActorToFilm()
+    {
+        FilmActor filmActor = config.filmActorAddView.getFilmActor();
+        if(filmActor == null) return;
+
+        config.filmsController.addActorToFilm(filmActor);
+    }
+
+    private void removeActorFromFilm()
+    {
+        FilmActor filmActor = config.filmActorRemoveView.getFilmActor();
+        if(filmActor == null) return;
+
+        config.filmsController.removeActorFromFilm(filmActor);
     }
 }
