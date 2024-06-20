@@ -83,7 +83,7 @@ public class MySqlActorsDao implements ActorsDao
 
             ResultSet row = statement.executeQuery();
 
-            while(row.next())
+            if (row.next())
             {
                 int actorId = row.getInt("actor_id");
                 String first = row.getString("first_name");
