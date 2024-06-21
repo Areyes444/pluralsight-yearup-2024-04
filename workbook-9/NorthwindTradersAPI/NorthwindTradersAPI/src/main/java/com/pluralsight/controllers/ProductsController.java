@@ -4,9 +4,7 @@ package com.pluralsight.controllers;
 import com.pluralsight.models.Product;
 import com.pluralsight.services.ProductsDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +29,12 @@ public class ProductsController
     public Product getById(@PathVariable int id)
     {
         return productsDao.getById(id);
+    }
+
+    @PostMapping("/products")
+    public Product insert(@RequestBody Product product)
+    {
+        var newProduct = productsDao.insert(product);
+        return newProduct;
     }
 }

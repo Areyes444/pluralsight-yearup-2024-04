@@ -2,6 +2,7 @@ package com.pluralsight.services;
 
 
 import com.pluralsight.models.Category;
+import com.pluralsight.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -85,4 +86,33 @@ public class JdbcCategoryDao implements CategoriesDao
         }
         return null;
     }
+
+    @Override
+    public Category insert(Category category)
+    {
+        int newId = 0;
+        try(Connection connection = dataSource.getConnection())
+        {
+            String sql = """
+                    insert into categories(CategoryName)
+                    values (?,?);
+                    """;
+
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, category.getCategoryName());
+
+            statement.executeUpdate();
+            ResultSet keys = statement.getGeneratedKeys();
+
+            if (keys.next())
+            {
+                newId = keys.getInt("CategoryId");
+            }
+        }
+        catch (SQLException e)
+        {
+        }
+        return getById(newId);
+    }
+
 }

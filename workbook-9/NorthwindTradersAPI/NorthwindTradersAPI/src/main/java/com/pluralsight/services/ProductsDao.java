@@ -8,5 +8,6 @@ public interface ProductsDao
 {
     List<Product> getAll();
     Product getById(int id);
+    Product insert(Product product);
 
 }

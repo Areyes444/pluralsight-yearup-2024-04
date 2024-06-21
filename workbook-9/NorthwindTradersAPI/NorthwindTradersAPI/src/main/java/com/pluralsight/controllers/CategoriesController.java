@@ -2,11 +2,10 @@ package com.pluralsight.controllers;
 
 
 import com.pluralsight.models.Category;
+import com.pluralsight.models.Product;
 import com.pluralsight.services.CategoriesDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +30,13 @@ public class CategoriesController
     public Category getById(@PathVariable int id)
     {
         return categoriesDao.getById(id);
+    }
+
+
+    @PostMapping("/categories")
+    public Category insert(@RequestBody Category category)
+    {
+        var newCategory = categoriesDao.insert(category);
+        return newCategory;
     }
 }
